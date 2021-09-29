@@ -1,44 +1,37 @@
 import React from 'react';
-import styled from 'styled-components';
+import { useState } from 'react'
+import { TodoListContainer } from './Styles';
 import TodoItems from './TodoItems';
-
-const TodoListContainer = styled.div `
-    width: 300px;
-    background-color: #018c96;
-    color: #f6ebf9;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    margin: auto;
-    border-radius: 20px;
-`
-
-const AddTaskButton = styled.button`
-    type: input;
-    background-color: rgb(0, 71, 69);
-    color: #f6ebf9;
-    border-radius: 30px;
-    border: none;
-    padding: 8px;
-    margin-left: 5px;
-    &:hover {
-        color: rgb(0, 71, 69);
-        background-color: #f6ebf9;
-    }
-`
+import Form from './TodoInput';
+import uuid from 'react-uuid'; //npm i react-uuid
 
 function TodoList () {
+    const [todos, setTodos] = useState([])
+
+    function addTask (userInput) {
+        if (userInput) {
+            const newTodo = {
+                id: uuid(),
+                task: userInput,
+                complete: false
+            }
+            setTodos([...todos, newTodo])
+        }
+    }
+
+    function removeTask (id) {
+        setTodos([...todos.filter((todo) => todo.id !== id)])
+    }
+
     return (
         <TodoListContainer>
             <h1>Todo List</h1>
-            <div>
-                <input type="text" className="newTask" placeholder="I need to do ..."></input>
-                <AddTaskButton>Add</AddTaskButton>
-            </div>
-            <TodoItems />
-
+            <Form addTask={addTask}/>
+            {todos.map((todo) => {
+                return (
+                <TodoItems todo={todo} removeTask={removeTask}/>
+                    )
+            })}
         </TodoListContainer>
     )
 }

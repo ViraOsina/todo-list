@@ -1,52 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
-import { RiDeleteBin6Line } from 'react-icons/ri'; //npm install @react-icons/all-files --save
+//import { useState } from 'react';
+import { TodoItemsList, TodoItem, DeleteBtn } from './Styles';
+import { RiDeleteBin6Line } from 'react-icons/ri'; //npm install react-icons --save
+import uuid from 'react-uuid'; //npm i react-uuid
 
-const TodoItem = styled.ul `
-    list-style-type: none;
-    width: 100%;
-    line-height: 2rem;
-
-`
-const DeleteBtn = styled.button `
-    border: none;
-    background-color: #018c96;
+function TodoItems ({ todo, removeTask }) {
     
-    margin-left: 5px;
-    &:hover {
-        color: #eb5401;
-    }
-`
-
-function TodoItems () {
     return (
-    <TodoItem>
-        <li> 
-            <input type="checkbox" style={{ marginRight: 8 }}/>
-            Item 1
-            <DeleteBtn><RiDeleteBin6Line /></DeleteBtn>
-        </li>
-        <li> 
-            <input type="checkbox" />
-            Item 1
-            <DeleteBtn><RiDeleteBin6Line /></DeleteBtn>
-        </li>
-        <li> 
-            <input type="checkbox" />
-            Item 1
-            <DeleteBtn><RiDeleteBin6Line /></DeleteBtn>
-        </li>
-        <li> 
-            <input type="checkbox" />
-            Item 1
-            <DeleteBtn><RiDeleteBin6Line /></DeleteBtn>
-        </li>
-        <li> 
-            <input type="checkbox" />
-            Item 1
-            <DeleteBtn><RiDeleteBin6Line /></DeleteBtn>
-        </li>
-    </TodoItem>
+    <TodoItemsList>
+        
+          <TodoItem key={todo.id} >
+                <input type="checkbox" style={{ marginRight: 8 }} />
+                {todo.task}
+                <DeleteBtn onClick={() => removeTask(todo.id)}><RiDeleteBin6Line /></DeleteBtn>
+            </TodoItem>
+        
+    </TodoItemsList>
     )
 }
 
