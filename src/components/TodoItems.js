@@ -1,16 +1,31 @@
 import React from 'react';
-//import { useState } from 'react';
+import { useState } from 'react';
 import { TodoItemsList, TodoItem, DeleteBtn } from './Styles';
 import { RiDeleteBin6Line } from 'react-icons/ri'; //npm install react-icons --save
-import uuid from 'react-uuid'; //npm i react-uuid
 
 function TodoItems ({ todo, removeTask }) {
-    
+    const [textStyle, setTextStyle] = useState('');
+
+    function handleChecked() {
+        if(!todo.complete) {
+            todo.complete = true;
+            setTextStyle ('line-through');
+        } else {
+            todo.complete = false;
+            setTextStyle ('');
+        }
+    }
+
     return (
     <TodoItemsList>
         
-          <TodoItem key={todo.id} >
-                <input type="checkbox" style={{ marginRight: 8 }} />
+          <TodoItem key={todo.id} style={{textDecorationLine: textStyle}}>
+                <input 
+                type="checkbox" 
+                checked={todo.complete}
+                style={{ marginRight: 8 }}
+                onChange={handleChecked}
+                 />
                 {todo.task}
                 <DeleteBtn onClick={() => removeTask(todo.id)}><RiDeleteBin6Line /></DeleteBtn>
             </TodoItem>

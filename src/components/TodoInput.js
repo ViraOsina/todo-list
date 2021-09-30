@@ -1,11 +1,6 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState } from 'react';
 import { AddTaskButton } from './Styles';
-
-//
-//onChange={handleChange}
-//onKeyDown={handleKeySubmit}
-//onSubmit={handleSubmit}
 
 function Form ({ addTask }) {
     const [userInput, setUserInput] = useState('');

@@ -29,7 +29,7 @@ function TodoList () {
             <Form addTask={addTask}/>
             {todos.map((todo) => {
                 return (
-                <TodoItems todo={todo} removeTask={removeTask}/>
+                <TodoItems key = {todo.id} todo={todo} removeTask={removeTask}/>
                     )
             })}
         </TodoListContainer>
