@@ -73,4 +73,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Astra part:
 npm exec astra-setup todos_workshop_db todos
 sudo npm install netlify-cli -g    +    pass
-netlify dev
+netlify dev [killall -9 node]

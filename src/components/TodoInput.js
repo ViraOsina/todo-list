@@ -29,10 +29,11 @@ function Form ({ addTask }) {
                 placeholder="I need to do ..."
                 onChange={handleChange}
                 onKeyDown={handleKeyPress}
+                value={userInput}
             >
 
             </input>
-            <AddTaskButton>Add</AddTaskButton>
+            <AddTaskButton onClick = {handleSubmit}>Add</AddTaskButton>
         </form>
     )
 }

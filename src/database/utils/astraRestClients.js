@@ -1,4 +1,4 @@
-const { createClient}= require("@astrajs/rest")
+const { createClient }= require("@astrajs/rest")
 const chalk = require('chalk')
 let astraRestClient = null;
 
