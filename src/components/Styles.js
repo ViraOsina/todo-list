@@ -4,8 +4,7 @@ import styled from 'styled-components';
 const TodoItemsList = styled.ul `
     list-style-type: none;
     width: 100%;
-    line-height: 2rem;
-
+    margin: 0;    
 `
 const TodoItem = styled.li `
     width: 90%;
@@ -13,6 +12,8 @@ const TodoItem = styled.li `
     border-radius: 10px;
     position: relative;
     justify-items: center;
+    line-height: 2rem;
+
 `
 const DeleteBtn = styled.button `
     border: none;
